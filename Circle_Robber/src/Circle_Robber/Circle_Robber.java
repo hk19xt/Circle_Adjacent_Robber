@@ -8,18 +8,16 @@ package Circle_Robber;
 public class Circle_Robber {
 
     public int calculation(int[] user_house, int initial, int last){ 
-        int update_number_houses = last - initial + 1; //The number of elements in the array.
-
-        int[] new_maximum = new int[update_number_houses]; //Initiate the new maximum array to store the updated elements.
-        new_maximum[0] = user_house[initial]; //The first element initialization.
-        new_maximum[1] = Math.max(user_house[initial],user_house[initial+1]); //The second element initialization 
-        //by comparing the first and the second elements to return the maximum number.
-
-        for(int i=initial+2; i<=last; i++){ //For loop from the second element to the last element
-            new_maximum[i-initial]=Math.max(user_house[i]+new_maximum[i-initial-2],
-                    new_maximum[i-initial-1]);
+        int part_1 = user_house[initial]; // First element in the array
+        int part_2 = Math.max(user_house[initial], user_house[initial+1]); // Maximum value between the second element and the first element in the array.
+        int temp_maximum = part_2; // Store the maximum value temporarily, which means it will be updated through conducting for loop.
+     
+        for(int i=initial+2; i<=last; i++){//For loop for finding the maximum value in the array
+         temp_maximum = Math.max(user_house[i]+part_1, part_2);
+         part_1 = part_2; //The first element position will be updated to the second element position.
+         part_2 = temp_maximum; //The temporary maximum value will be also updated whenever it conducts for loop.
         }
-        return new_maximum[last-initial];
+     
     }//calculation
 
 
