@@ -17,6 +17,7 @@ public class Circle_Robber {
          part_1 = part_2; //The first element position will be updated to the second element position.
          part_2 = temp_maximum; //The temporary maximum value will be also updated whenever it conducts for loop.
         }
+     return part_2;
      
     }//calculation
 
